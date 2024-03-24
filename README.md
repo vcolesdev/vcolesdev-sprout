@@ -1,16 +1,12 @@
-# Vcolesdev Kanban Board Project (WIP)
+# Sprout Kanban (WIP)
 
-[Link to YouTube Tutorial](https://www.youtube.com/watch?v=RG-3R6Pu_Ik)
+[Link to Tutorial Code](https://github.com/vcolesdev/vcolesdev-kanban-project)
 
 ## Description
 
-This is a simple Kanban board project based on the tutorial by [CodeWithKliton](https://www.youtube.com/@codewithkliton).  Tutorial code is located on the `main` branch.
+A custom kanban-style application.  Description to be updated.
 
-This is a work in progress.  On a separate branch, there will be a version of the project that contains personal modifications and improvements.  The name and creation of this branch is to be determined.
-
-This document will be updated as the project progresses.
-
-## Technologies
+## Built With
 
 - Node.js + Vite
 - ReactJS
@@ -20,7 +16,10 @@ This document will be updated as the project progresses.
 
 ## Improvements
 
-To be added.
+- Feature 1
+- Feature 2
+- Feature 3
+- Feature 4
 
 ## Installation
 
@@ -31,5 +30,5 @@ To be added.
 
 ## License
 
-To be added.
+MIT | webdev@vcoles.com
 
