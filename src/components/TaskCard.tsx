@@ -1,8 +1,8 @@
-import {Id, Task} from '../types';
+import { Id, Task } from "../types";
 import DeleteIcon from "../icons/DeleteIcon.tsx";
-import {useState} from "react";
-import {useSortable} from "@dnd-kit/sortable";
-import {CSS} from "@dnd-kit/utilities";
+import { useState } from "react";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 interface Props {
   task: Task;
@@ -17,7 +17,7 @@ interface Props {
  * @param updateTask
  * TaskCard component
  */
-function TaskCard({task, deleteTask, updateTask}: Props) {
+function TaskCard({ task, deleteTask, updateTask }: Props) {
   const [mouseIsOver, setMouseIsOver] = useState(false);
   const [editMode, setEditMode] = useState(false);
 
@@ -27,15 +27,15 @@ function TaskCard({task, deleteTask, updateTask}: Props) {
     listeners,
     transform,
     transition,
-    isDragging
+    isDragging,
   } = useSortable({
     id: task.id,
     data: {
       type: "Task",
-      task
+      task,
     },
-    disabled: editMode // Disable dragging when editing the column title
-  })
+    disabled: editMode, // Disable dragging when editing the column title
+  });
 
   /**
    * toggleEditMode()
@@ -44,13 +44,13 @@ function TaskCard({task, deleteTask, updateTask}: Props) {
   const toggleEditMode = () => {
     setEditMode((prevState) => !prevState);
     setMouseIsOver(false);
-  }
+  };
 
   // Style for the task
   const style = {
     transition,
-    transform: CSS.Transform.toString(transform)
-  }
+    transform: CSS.Transform.toString(transform),
+  };
 
   if (isDragging) {
     return (
@@ -72,7 +72,7 @@ function TaskCard({task, deleteTask, updateTask}: Props) {
           relative
         "
       />
-    )
+    );
   }
 
   if (editMode) {
@@ -97,7 +97,8 @@ function TaskCard({task, deleteTask, updateTask}: Props) {
           relative
         "
       >
-        <textarea className="
+        <textarea
+          className="
           h-[90%]
           w-full
           resize-none
@@ -121,7 +122,7 @@ function TaskCard({task, deleteTask, updateTask}: Props) {
           }}
         ></textarea>
       </div>
-    )
+    );
   }
 
   return (
@@ -155,7 +156,8 @@ function TaskCard({task, deleteTask, updateTask}: Props) {
           setMouseIsOver(false);
         }}
       >
-        <p className="
+        <p
+          className="
           my-auto
           h-[90%]
           w-full
@@ -167,8 +169,9 @@ function TaskCard({task, deleteTask, updateTask}: Props) {
           {task.content}
         </p>
         {/** Show delete button when mouseover **/}
-        {mouseIsOver &&
-          <button className="
+        {mouseIsOver && (
+          <button
+            className="
             stroke-white
             absolute
             right-4
@@ -186,7 +189,7 @@ function TaskCard({task, deleteTask, updateTask}: Props) {
           >
             <DeleteIcon />
           </button>
-        }
+        )}
       </div>
     </>
   );

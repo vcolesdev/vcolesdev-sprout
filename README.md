@@ -4,7 +4,7 @@
 
 ## Description
 
-A custom kanban-style application.  Description to be updated.
+A custom kanban-style application. Description to be updated.
 
 ## Built With
 
@@ -31,4 +31,3 @@ A custom kanban-style application.  Description to be updated.
 ## License
 
 MIT | webdev@vcoles.com
-

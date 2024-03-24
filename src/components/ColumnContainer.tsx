@@ -1,8 +1,8 @@
-import {useMemo, useState} from "react";
-import {SortableContext, useSortable} from "@dnd-kit/sortable";
+import { useMemo, useState } from "react";
+import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import DeleteIcon from "../icons/DeleteIcon.tsx";
-import {Column, Id, Task} from "../types.ts";
-import {CSS} from "@dnd-kit/utilities";
+import { Column, Id, Task } from "../types.ts";
+import { CSS } from "@dnd-kit/utilities";
 import PlusIcon from "../icons/PlusIcon.tsx";
 import TaskCard from "./TaskCard.tsx";
 
@@ -24,7 +24,7 @@ function ColumnContainer(props: Props) {
     createTask,
     deleteTask,
     updateTask,
-    tasks
+    tasks,
   } = props;
 
   // State for the edit mode of the column, currently editing...
@@ -36,14 +36,14 @@ function ColumnContainer(props: Props) {
     listeners,
     transform,
     transition,
-    isDragging
+    isDragging,
   } = useSortable({
-      id: column.id,
-      data: {
-        type: "Column",
-        column
-      },
-      disabled: editMode // Disable dragging when editing the column title
+    id: column.id,
+    data: {
+      type: "Column",
+      column,
+    },
+    disabled: editMode, // Disable dragging when editing the column title
   });
 
   // Get an array of task ids
@@ -54,8 +54,8 @@ function ColumnContainer(props: Props) {
   // Style for the column
   const style = {
     transition,
-    transform: CSS.Transform.toString(transform)
-  }
+    transform: CSS.Transform.toString(transform),
+  };
 
   if (isDragging) {
     return (
@@ -74,9 +74,8 @@ function ColumnContainer(props: Props) {
           flex
           flex-col
         "
-      >
-      </div>
-    )
+      ></div>
+    );
   }
 
   return (
@@ -112,13 +111,14 @@ function ColumnContainer(props: Props) {
           items-center
           justify-between
           "
-          onClick={() => {
-            // You can edit the column title
-            setEditMode(true);
-          }}
+        onClick={() => {
+          // You can edit the column title
+          setEditMode(true);
+        }}
       >
         <div className="flex gap-2">
-          <div className="
+          <div
+            className="
             flex
             justify-center
             items-center
@@ -134,8 +134,8 @@ function ColumnContainer(props: Props) {
           {!editMode && column.title}
           {editMode && (
             <input
-             autoFocus
-             className="
+              autoFocus
+              className="
               bg-black
               focus:border-rose-500
               border
@@ -143,19 +143,19 @@ function ColumnContainer(props: Props) {
               outline-none
               px-2
              "
-             value={column.title}
-             onChange={(event) => {
-               // Update the column title
-               updateColumn(column.id, event.target.value);
-             }}
-             onBlur={() => {
-               // Save the new title when the input is unfocused
-               setEditMode(false);
-             }}
-             onKeyDown={(event) => {
-               if (event.key !== "Enter") return;
-               setEditMode(false);
-             }}
+              value={column.title}
+              onChange={(event) => {
+                // Update the column title
+                updateColumn(column.id, event.target.value);
+              }}
+              onBlur={() => {
+                // Save the new title when the input is unfocused
+                setEditMode(false);
+              }}
+              onKeyDown={(event) => {
+                if (event.key !== "Enter") return;
+                setEditMode(false);
+              }}
             />
           )}
         </div>
@@ -168,15 +168,16 @@ function ColumnContainer(props: Props) {
             px-1
             py-2
             "
-            onClick={() => {
-              deleteColumn(column.id);
-            }}
-          >
-            <DeleteIcon />
+          onClick={() => {
+            deleteColumn(column.id);
+          }}
+        >
+          <DeleteIcon />
         </button>
       </div>
       {/** Column Task Container **/}
-      <div className="
+      <div
+        className="
         flex
         flex-grow
         flex-col
@@ -186,20 +187,21 @@ function ColumnContainer(props: Props) {
         overflow-y-auto"
       >
         <SortableContext items={tasksIds}>
-        {tasks.map((task) => {
-          return (
-            <TaskCard
-              key={task.id}
-              task={task}
-              deleteTask={deleteTask}
-              updateTask={updateTask}
-            />
-          )
-        })}
+          {tasks.map((task) => {
+            return (
+              <TaskCard
+                key={task.id}
+                task={task}
+                deleteTask={deleteTask}
+                updateTask={updateTask}
+              />
+            );
+          })}
         </SortableContext>
       </div>
       {/** Column Footer **/}
-      <button className="
+      <button
+        className="
         flex
         gap-2
         items-center
@@ -219,7 +221,7 @@ function ColumnContainer(props: Props) {
         Add Task
       </button>
     </div>
-  )
+  );
 }
 
 export default ColumnContainer;
