@@ -1,8 +1,8 @@
-import { createPortal } from "react-dom";
-import ColumnContainer from "./ColumnContainer.tsx";
-import PlusIcon from "../icons/PlusIcon.tsx";
-import { useState, useEffect, useMemo } from "react";
-import { Column, Id, Task } from "../types.ts";
+import PlusIcon from "../../icons/PlusIcon.tsx";
+import ColumnContainer from "../Columns/ColumnContainer.tsx";
+import {useState, useEffect, useMemo} from "react";
+import {createPortal} from "react-dom";
+import {Column, Id, Task} from "../../types.ts";
 
 import {
   DndContext,
@@ -15,8 +15,9 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
-import { arrayMove, SortableContext } from "@dnd-kit/sortable";
-import TaskCard from "./TaskCard.tsx";
+import {arrayMove, SortableContext} from "@dnd-kit/sortable";
+
+import TaskCard from "../TaskCard/TaskCard.tsx";
 
 /**
  * KanbanBoard()
@@ -102,7 +103,7 @@ function KanbanBoard() {
       if (col.id !== id) {
         return col;
       }
-      return { ...col, title };
+      return {...col, title};
     });
     // Update the columns array with the new columns
     setColumns(newColumns);
@@ -143,7 +144,7 @@ function KanbanBoard() {
       if (task.id !== id) {
         return task;
       }
-      return { ...task, content };
+      return {...task, content};
     });
     setTasks(newTasks);
   };
@@ -178,7 +179,7 @@ function KanbanBoard() {
     setActiveTask(null);
 
     // Get event properties
-    const { active, over } = event;
+    const {active, over} = event;
     if (!over) return;
 
     const activeColumnId = active.id;
@@ -204,7 +205,7 @@ function KanbanBoard() {
    * Dispatch an action when a drag is over
    */
   const onDragOver = (event: DragOverEvent) => {
-    const { active, over } = event;
+    const {active, over} = event;
     if (!over) return;
 
     const activeId = active.id;

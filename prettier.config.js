@@ -2,7 +2,7 @@
 
 /** @type {import("prettier").Config} */
 const config = {
-  bracketSpacing: true,
+  bracketSpacing: false,
   semi: true,
   singleQuote: false,
   trailingComma: "es5",

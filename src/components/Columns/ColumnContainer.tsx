@@ -1,10 +1,10 @@
-import { useMemo, useState } from "react";
-import { SortableContext, useSortable } from "@dnd-kit/sortable";
-import DeleteIcon from "../icons/DeleteIcon.tsx";
-import { Column, Id, Task } from "../types.ts";
-import { CSS } from "@dnd-kit/utilities";
-import PlusIcon from "../icons/PlusIcon.tsx";
-import TaskCard from "./TaskCard.tsx";
+import {useMemo, useState} from "react";
+import {SortableContext, useSortable} from "@dnd-kit/sortable";
+import DeleteIcon from "../../icons/DeleteIcon.tsx";
+import {Column, Id, Task} from "../../types.ts";
+import {CSS} from "@dnd-kit/utilities";
+import PlusIcon from "../../icons/PlusIcon.tsx";
+import TaskCard from "../TaskCard/TaskCard.tsx";
 
 interface Props {
   column: Column;
@@ -30,21 +30,15 @@ function ColumnContainer(props: Props) {
   // State for the edit mode of the column, currently editing...
   const [editMode, setEditMode] = useState(false);
 
-  const {
-    setNodeRef,
-    attributes,
-    listeners,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({
-    id: column.id,
-    data: {
-      type: "Column",
-      column,
-    },
-    disabled: editMode, // Disable dragging when editing the column title
-  });
+  const {setNodeRef, attributes, listeners, transform, transition, isDragging} =
+    useSortable({
+      id: column.id,
+      data: {
+        type: "Column",
+        column,
+      },
+      disabled: editMode, // Disable dragging when editing the column title
+    });
 
   // Get an array of task ids
   const tasksIds = useMemo(() => {
